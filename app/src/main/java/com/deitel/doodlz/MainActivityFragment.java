@@ -39,10 +39,10 @@ public class MainActivityFragment extends Fragment {
    // called when Fragment's view needs to be created
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
+                            Bundle savedInstanceState) {
       super.onCreateView(inflater, container, savedInstanceState);
       View view =
-         inflater.inflate(R.layout.fragment_main, container, false);
+              inflater.inflate(R.layout.fragment_main, container, false);
 
       setHasOptionsMenu(true); // this fragment has menu items to display
 
@@ -67,13 +67,13 @@ public class MainActivityFragment extends Fragment {
    private void enableAccelerometerListening() {
       // get the SensorManager
       SensorManager sensorManager =
-         (SensorManager) getActivity().getSystemService(
-            Context.SENSOR_SERVICE);
+              (SensorManager) getActivity().getSystemService(
+                      Context.SENSOR_SERVICE);
 
       // register to listen for accelerometer events
       sensorManager.registerListener(sensorEventListener,
-         sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-         SensorManager.SENSOR_DELAY_NORMAL);
+              sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+              SensorManager.SENSOR_DELAY_NORMAL);
    }
 
    // stop listening for accelerometer events
@@ -87,47 +87,47 @@ public class MainActivityFragment extends Fragment {
    private void disableAccelerometerListening() {
       // get the SensorManager
       SensorManager sensorManager =
-         (SensorManager) getActivity().getSystemService(
-            Context.SENSOR_SERVICE);
+              (SensorManager) getActivity().getSystemService(
+                      Context.SENSOR_SERVICE);
 
       // stop listening for accelerometer events
       sensorManager.unregisterListener(sensorEventListener,
-         sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
+              sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER));
    }
 
    // event handler for accelerometer events
    private final SensorEventListener sensorEventListener =
-      new SensorEventListener() {
-         // use accelerometer to determine whether user shook device
-         @Override
-         public void onSensorChanged(SensorEvent event) {
-            // ensure that other dialogs are not displayed
-            if (!dialogOnScreen) {
-               // get x, y, and z values for the SensorEvent
-               float x = event.values[0];
-               float y = event.values[1];
-               float z = event.values[2];
+           new SensorEventListener() {
+              // use accelerometer to determine whether user shook device
+              @Override
+              public void onSensorChanged(SensorEvent event) {
+                 // ensure that other dialogs are not displayed
+                 if (!dialogOnScreen) {
+                    // get x, y, and z values for the SensorEvent
+                    float x = event.values[0];
+                    float y = event.values[1];
+                    float z = event.values[2];
 
-               // save previous acceleration value
-               lastAcceleration = currentAcceleration;
+                    // save previous acceleration value
+                    lastAcceleration = currentAcceleration;
 
-               // calculate the current acceleration
-               currentAcceleration = x * x + y * y + z * z;
+                    // calculate the current acceleration
+                    currentAcceleration = x * x + y * y + z * z;
 
-               // calculate the change in acceleration
-               acceleration = currentAcceleration *
-                  (currentAcceleration - lastAcceleration);
+                    // calculate the change in acceleration
+                    acceleration = currentAcceleration *
+                            (currentAcceleration - lastAcceleration);
 
-               // if the acceleration is above a certain threshold
-               if (acceleration > ACCELERATION_THRESHOLD)
-                  confirmErase();
-            }
-         }
+                    // if the acceleration is above a certain threshold
+                    if (acceleration > ACCELERATION_THRESHOLD)
+                       confirmErase();
+                 }
+              }
 
-         // required method of interface SensorEventListener
-         @Override
-         public void onAccuracyChanged(Sensor sensor, int accuracy) {}
-      };
+              // required method of interface SensorEventListener
+              @Override
+              public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+           };
 
    // confirm whether image should be erase
    private void confirmErase() {
@@ -161,7 +161,7 @@ public class MainActivityFragment extends Fragment {
             return true; // consume the menu event
          case R.id.line_width:
             LineWidthDialogFragment widthDialog =
-               new LineWidthDialogFragment();
+                    new LineWidthDialogFragment();
             widthDialog.show(getFragmentManager(), "line width dialog");
             return true; // consume the menu event
          case R.id.delete_drawing:
@@ -184,29 +184,29 @@ public class MainActivityFragment extends Fragment {
       // checks if the app does not have permission needed
       // to save the image
       if (getContext().checkSelfPermission(
-         Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
-         PackageManager.PERMISSION_GRANTED) {
+              Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+              PackageManager.PERMISSION_GRANTED) {
 
          // shows an explanation for why permission is needed
          if (shouldShowRequestPermissionRationale(
-            Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                 Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             AlertDialog.Builder builder =
-               new AlertDialog.Builder(getActivity());
+                    new AlertDialog.Builder(getActivity());
 
             // set Alert Dialog's message
             builder.setMessage(R.string.permission_explanation);
 
             // add an OK button to the dialog
             builder.setPositiveButton(android.R.string.ok,
-               new DialogInterface.OnClickListener() {
-                  @Override
-                  public void onClick(DialogInterface dialog, int which) {
-                     // request permission
-                     requestPermissions(new String[]{
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        SAVE_IMAGE_PERMISSION_REQUEST_CODE);
-                  }
-               }
+                    new DialogInterface.OnClickListener() {
+                       @Override
+                       public void onClick(DialogInterface dialog, int which) {
+                          // request permission
+                          requestPermissions(new String[]{
+                                          Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                  SAVE_IMAGE_PERMISSION_REQUEST_CODE);
+                       }
+                    }
             );
 
             // display the dialog
@@ -215,8 +215,8 @@ public class MainActivityFragment extends Fragment {
          else {
             // request permission
             requestPermissions(
-               new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-               SAVE_IMAGE_PERMISSION_REQUEST_CODE);
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    SAVE_IMAGE_PERMISSION_REQUEST_CODE);
          }
       }
       else { // if app already has permission to write to external storage
@@ -228,7 +228,7 @@ public class MainActivityFragment extends Fragment {
    // permission for saving an image
    @Override
    public void onRequestPermissionsResult(int requestCode,
-      String[] permissions, int[] grantResults) {
+                                          String[] permissions, int[] grantResults) {
       // switch chooses appropriate action based on which feature
       // requested permission
       switch (requestCode) {
