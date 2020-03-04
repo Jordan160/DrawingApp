@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:scrollbars="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:orientation="vertical" >
+
+        <GridLayout
+            android:id="@+id/GridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:numColumns="2"
+            android:rowCount="2" >
+
+            <ImageButton
+                android:id="@+id/image1"
+                android:layout_width="180dp"
+                android:layout_height="204dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/sonic"
+                android:tag="sonic" />
+
+            <ImageButton
+                android:id="@+id/image2"
+                android:layout_width="180dp"
+                android:layout_height="204dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/knuckles"
+                android:tag="knuckles" />
+
+            <ImageButton
+                android:id="@+id/image3"
+                android:layout_width="180dp"
+                android:layout_height="204dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/toad"
+                android:tag="toad" />
+
+            <ImageButton
+                android:id="@+id/image4"
+                android:layout_width="180dp"
+                android:layout_height="204dp"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/mario"
+                android:tag="mario" />
+
+        </GridLayout>
+    </LinearLayout>
+
+</ScrollView>
