@@ -32,6 +32,7 @@ public class DoodleView extends View {
 
    private Bitmap bitmap; // drawing area for displaying or saving
    private Canvas bitmapCanvas; // used to to draw on the bitmap
+   private int backgroundColor; // used to store background color
    private final Paint paintScreen; // used to draw bitmap onto screen
    private final Paint paintLine; // used to draw lines onto bitmap
 
@@ -82,23 +83,17 @@ public class DoodleView extends View {
 
     // set the background color
     public void setBackgroundColor(int color) {
-        bitmapCanvas.drawColor(color);
+      backgroundColor = color;
+      bitmapCanvas.drawColor(color);
+    }
+
+    public int getBackgroundColor() {
+      return backgroundColor;
     }
 
     // set the background image
     public void setBackgroundImage(Context context, String imageName) {
-        //bitmapCanvas.drawColor(color);
-//        BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
-//        backgroundImage.setBackground(bitmapDrawable);
-
-       //bitmapCanvas.drawPicture(getResources().get(R.drawable.ic_background));
-       //bitmap =  BitmapFactory.decodeResource(getResources(),R.drawable.ic_background);
-
-       //Log.i("Pizza cats is:", imageName);
-
        Resources res = getResources();
-
-
        int resID = getResources().getIdentifier(imageName, "drawable", context.getPackageName());
 
        Bitmap image = BitmapFactory.decodeResource(res, resID);

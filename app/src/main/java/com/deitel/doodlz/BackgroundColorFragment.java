@@ -73,7 +73,7 @@ public class BackgroundColorFragment extends DialogFragment {
 
         // use current drawing color to set SeekBar values
         final DoodleView doodleView = getDoodleFragment().getDoodleView();
-        color = doodleView.getDrawingColor();
+        color = doodleView.getBackgroundColor();
         alphaSeekBar.setProgress(Color.alpha(color));
         redSeekBar.setProgress(Color.red(color));
         greenSeekBar.setProgress(Color.green(color));
